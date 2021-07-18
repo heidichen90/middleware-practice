@@ -3,8 +3,35 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
+app.use((req, res, next) => {
+  let startTime = new Date();
+  let endTime = new Date();
+
+  const afterResponse = () => {
+    endTime = Date.now();
+    console.log(
+      new Date(startTime).toLocaleString(),
+      " | ",
+      req.method,
+      " from ",
+      req.originalUrl,
+      " | ",
+      "total time: ",
+      endTime - startTime,
+      "ms"
+    );
+    next();
+  };
+
+  startTime = Date.now();
+  next();
+
+  res.on("close", afterResponse);
+});
+
+app.get("/", (req, res, next) => {
   res.send("列出全部 Todo");
+  next();
 });
 
 app.get("/new", (req, res) => {
