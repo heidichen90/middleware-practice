@@ -26,6 +26,7 @@ app.use((req, res, next) => {
   startTime = Date.now();
   next();
 
+  //can listen on 'close' or 'finish'
   res.on("close", afterResponse);
 });
 
