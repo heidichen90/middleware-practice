@@ -5,7 +5,7 @@ Middle ware practice to get familiar with middleware feature in express.js
 ## Feature
 
 - capture the start time and end time in every reqeust
-- log [TIME] | [METHOD] from [URL] | total time: [TIME TO PROCESS REQUEST] ms
+- log format: [TIME] | [METHOD] from [URL] | total time: [TIME TO PROCESS REQUEST] ms
 
 ## Getting Started
 
