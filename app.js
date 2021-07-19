@@ -5,10 +5,9 @@ const port = 3000;
 
 app.use((req, res, next) => {
   let startTime = new Date();
-  let endTime = new Date();
 
   const afterResponse = () => {
-    endTime = Date.now();
+    const endTime = Date.now();
     console.log(
       new Date(startTime).toLocaleString(),
       " | ",
@@ -20,7 +19,6 @@ app.use((req, res, next) => {
       endTime - startTime,
       "ms"
     );
-    next();
   };
 
   startTime = Date.now();
@@ -32,7 +30,7 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res, next) => {
   res.send("列出全部 Todo");
-  next();
+  // next();
 });
 
 app.get("/new", (req, res) => {
